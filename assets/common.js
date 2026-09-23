@@ -29,26 +29,30 @@ window.SURVEY = (function(){
     clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove("show"), 2800);
   }
 
-  // Decorative grass sward along the bottom of the masthead
+  // Decorative grass swards: along the bottom of the masthead, and at the bull's feet above the footer
   function sward(){
-    const c = $("#sward"); if (!c) return;
-    const ctx = c.getContext("2d");
-    function draw(){
+    const targets = [[$("#sward"), {seed:3, tall:30, density:3.2, fill:true}],
+                     [$("#swardFoot"), {seed:11, tall:40, density:2.2, fill:false}]]
+      .filter(([c]) => c);
+    function draw(c, o){
+      const ctx = c.getContext("2d");
       const w = c.clientWidth, h = c.clientHeight, dpr = window.devicePixelRatio || 1;
       c.width = w*dpr; c.height = h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
       const ground = getComputedStyle(document.body).backgroundColor;
-      let s = 3; const r = () => (s = (s*16807) % 2147483647) / 2147483647;
-      for (let i = 0, n = Math.floor(w/3.2); i < n; i++){
-        const x = r()*w, bh = 14 + r()*30, lean = (r()-.5)*14;
+      let s = o.seed; const r = () => (s = (s*16807) % 2147483647) / 2147483647;
+      for (let i = 0, n = Math.floor(w/o.density); i < n; i++){
+        const x = r()*w, bh = 14 + r()*o.tall, lean = (r()-.5)*14;
         ctx.strokeStyle = ["#6FA23F","#8DBB57","#4F7F2C","#A8C96E"][Math.floor(r()*4)];
         ctx.globalAlpha = .55 + r()*.45; ctx.lineWidth = 1.2 + r()*1.3;
         ctx.beginPath(); ctx.moveTo(x,h); ctx.quadraticCurveTo(x+lean*.3,h-bh*.6,x+lean,h-bh); ctx.stroke();
         if (r() < .05){ ctx.globalAlpha = .9; ctx.fillStyle = r() < .5 ? "#F2F0E4" : "#D98AA8"; ctx.beginPath(); ctx.arc(x+lean,h-bh,2.4,0,7); ctx.fill(); }
       }
-      ctx.globalAlpha = 1; ctx.fillStyle = ground; ctx.fillRect(0,h-6,w,6);
+      ctx.globalAlpha = 1;
+      if (o.fill){ ctx.fillStyle = ground; ctx.fillRect(0,h-6,w,6); }
     }
-    draw(); let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(draw,150); });
-    matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", draw);
+    const drawAll = () => targets.forEach(([c, o]) => draw(c, o));
+    drawAll(); let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(drawAll,150); });
+    matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", drawAll);
   }
 
   return {QUESTIONS, COUNTIES, FARM_TYPES, COLLECTORS, $, esc, client, toast, sward};
