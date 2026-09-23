@@ -85,6 +85,7 @@ input[type=text]:focus,select:focus{border-color:var(--grass);outline:none;box-s
 .privacy .sub{margin-top:12px}
 .contact{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem;color:var(--ink-2)}
 .contact strong{color:var(--ink)}
+.contact a,.privacy a{color:var(--grass);font-weight:600;overflow-wrap:anywhere}
 
 /* Results */
 .banner{background:var(--hay-soft);border:1px solid var(--hay);border-radius:12px;padding:12px 16px;font-size:.9rem}
