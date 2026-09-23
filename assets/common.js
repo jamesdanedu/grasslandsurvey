@@ -12,7 +12,7 @@ window.SURVEY = (function(){
     "Mayo","Meath","Monaghan","Offaly","Roscommon","Sligo","Tipperary","Tyrone","Waterford","Westmeath",
     "Wexford","Wicklow"];
   const FARM_TYPES = ["Suckler beef","Beef finishing","Dairy","Sheep","Mixed livestock","Tillage","Other"];
-  const COLLECTORS = ["Self-completed","Sean Monahan","Eamon Gill","Micheal Glennon","Charlie Minnock"];
+  const COLLECTORS = ["Self-completed","Sean Monahan","Eamon Gill","Michael Glennon","Charlie Minnock"];
 
   const $ = s => document.querySelector(s);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));

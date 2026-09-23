@@ -1,7 +1,7 @@
 # Multispecies Grass Survey
 
 Irish Angus Schools Competition project — St Mary's Edenderry.
-Survey team: Sean Monahan, Eamon Gill, Micheal Glennon, Charlie Minnock.
+Survey team: Sean Monahan, Eamon Gill, Michael Glennon, Charlie Minnock.
 
 A static site (no build step) hosted on Vercel, with responses stored in Supabase.
 
