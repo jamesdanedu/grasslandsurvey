@@ -68,7 +68,7 @@
   /* ---------- Sample data (only while there are no real responses) ---------- */
   const SAMPLE = (function(){
     const types = ["Suckler beef","Suckler beef","Beef finishing","Dairy","Dairy","Sheep","Mixed livestock","Tillage"];
-    const who = ["Self-completed","Self-completed","Sean Monahan","Eamon Gill","Micheal Glennon","Charlie Minnock"];
+    const who = ["Self-completed","Self-completed","Sean Monahan","Eamon Gill","Michael Glennon","Charlie Minnock"];
     const counties = ["Offaly","Offaly","Offaly","Kildare","Westmeath","Laois","Meath","Kerry",""];
     let seed = 7; const rnd = () => (seed = (seed*9301+49297) % 233280) / 233280;
     const out = [];

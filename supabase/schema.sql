@@ -17,7 +17,7 @@ create table if not exists public.grass_survey_responses (
                  'Louth','Mayo','Meath','Monaghan','Offaly','Roscommon','Sligo','Tipperary','Tyrone',
                  'Waterford','Westmeath','Wexford','Wicklow')),
   collected_by text not null default 'Self-completed' check (collected_by in (
-                 'Self-completed','Sean Monahan','Eamon Gill','Micheal Glennon','Charlie Minnock')),
+                 'Self-completed','Sean Monahan','Eamon Gill','Michael Glennon','Charlie Minnock')),
   q1 boolean not null,  -- heard of multispecies mixes
   q2 boolean not null,  -- have sown multispecies
   q3 boolean not null,  -- planning to sow
