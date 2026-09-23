@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Survey Results · Multispecies Grass</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F4424">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F4424'/%3E%3Cpath d='M9 26c0-6 1-11 3-15M16 26c0-8 0-13 0-18M23 26c0-6-1-11-3-15' stroke='%238DBB57' stroke-width='2.6' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<header class="mast">
+  <div class="mast-in">
+    <div class="mast-nav">
+      <div class="eyebrow">Irish Angus Schools Competition · Results</div>
+      <a href="/">View survey</a>
+    </div>
+    <h1>Multispecies Grass Survey</h1>
+    <p>What Irish grass farmers told us about multispecies swards — updated live as responses come in.</p>
+  </div>
+  <canvas id="sward" aria-hidden="true"></canvas>
+</header>
+
+<main class="wrap">
+  <!-- Sign in -->
+  <section id="loginView" class="lift" hidden>
+    <form class="card login" id="loginForm" novalidate>
+      <h2>Team sign in</h2>
+      <p class="sub">Responses include farmers' names, so results are for the survey team only.</p>
+      <label class="f" for="lEmail">Email
+        <input type="email" id="lEmail" autocomplete="email" required>
+      </label>
+      <label class="f" for="lPass">Password
+        <input type="password" id="lPass" autocomplete="current-password" required>
+      </label>
+      <p class="err" id="loginErr" role="alert"></p>
+      <button class="btn btn-primary" type="submit" id="loginBtn">Sign in</button>
+    </form>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="dashView" class="panel lift" hidden>
+    <div class="card toolbar">
+      <span class="who" id="who"></span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost" id="refreshBtn" type="button">Refresh</button>
+        <button class="btn btn-ghost" id="exportBtn" type="button">Export CSV</button>
+        <button class="btn btn-ghost" id="logoutBtn" type="button">Sign out</button>
+      </div>
+    </div>
+
+    <div class="banner" id="sampleBanner" hidden>No responses yet — showing <strong>sample data</strong> so you can see how the results will look. It disappears as soon as the first real response arrives.</div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="card">
+      <h2>Answers by question</h2>
+      <div class="bars" id="qbars"></div>
+      <div class="legend"><span><i style="background:var(--yes)"></i>Yes</span><span><i style="background:var(--no-soft);border:1px solid var(--no)"></i>No</span></div>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <h2>Adoption pathway</h2>
+        <p class="sub">Share of all farmers surveyed at each stage.</p>
+        <div class="funnel" id="funnel"></div>
+      </div>
+      <div class="card">
+        <h2>Key findings</h2>
+        <ul class="insights" id="insights"></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>By type of farm</h2>
+      <p class="sub">% answering Yes. Darker cells mean stronger agreement.</p>
+      <div class="scroll"><table id="byType"></table></div>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <h2>By county</h2>
+        <p class="sub">Responses that gave a county.</p>
+        <div class="bars" id="byCounty"></div>
+      </div>
+      <div class="card">
+        <h2>Surveyed by</h2>
+        <div class="bars" id="byCollector"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Responses per day</h2>
+      <p class="sub">Last 14 days</p>
+      <div class="days" id="days"></div>
+    </div>
+
+    <div class="card">
+      <h2>All responses</h2>
+      <div class="scroll"><table id="rtable"></table></div>
+    </div>
+  </section>
+
+  <p class="status" id="pageStatus" role="status"></p>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/common.js"></script>
+<script src="/assets/results.js"></script>
+</body>
+</html>

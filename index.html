@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Multispecies Grass Survey</title>
+<meta name="description" content="Irish Angus Schools Competition — a five-question survey for grass farmers on multispecies swards. St Mary's Edenderry.">
+<meta name="theme-color" content="#1F4424">
+<meta property="og:title" content="Multispecies Grass Survey">
+<meta property="og:description" content="Five quick questions for grass farmers on multispecies swards. Irish Angus Schools Competition.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F4424'/%3E%3Cpath d='M9 26c0-6 1-11 3-15M16 26c0-8 0-13 0-18M23 26c0-6-1-11-3-15' stroke='%238DBB57' stroke-width='2.6' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<header class="mast">
+  <div class="mast-in">
+    <div class="eyebrow">Irish Angus Schools Competition · St Mary's Edenderry</div>
+    <h1>Multispecies Grass Survey</h1>
+    <p>Your views matter — help us build a greener future. Five quick questions for grass farmers on multispecies swards. It takes about a minute.</p>
+  </div>
+  <canvas id="sward" aria-hidden="true"></canvas>
+</header>
+
+<main class="wrap">
+  <form id="survey" class="panel lift" novalidate>
+    <div class="card">
+      <h2>About the farm</h2>
+      <p class="sub">Name and county are optional — leave them blank to answer anonymously.</p>
+      <div class="fields">
+        <label class="f" for="fName">Your name <span class="hint">Optional</span>
+          <input type="text" id="fName" name="name" autocomplete="name" maxlength="80" placeholder="e.g. Pat Kelly">
+        </label>
+        <label class="f" for="fType">Type of farm
+          <select id="fType" name="farmType" required></select>
+        </label>
+        <label class="f" for="fCounty">County <span class="hint">Optional</span>
+          <select id="fCounty" name="county"></select>
+        </label>
+        <label class="f" for="fBy">Surveyed by <span class="hint">Leave as self-completed if you're filling this in yourself</span>
+          <select id="fBy" name="collectedBy"></select>
+        </label>
+      </div>
+      <!-- Spam trap: people never see or fill this -->
+      <div class="hp" aria-hidden="true"><label for="fWebsite">Website</label><input type="text" id="fWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+    </div>
+
+    <div class="card">
+      <h2>The questions</h2>
+      <div class="qlist" id="qlist"></div>
+    </div>
+
+    <div class="card actions">
+      <div class="contact">
+        <span>Questions? Contact <strong>Sean Monahan</strong> · <strong>085 1287997</strong></span>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Submit response</button>
+    </div>
+    <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+  </form>
+
+  <section class="panel lift" id="thanks" hidden>
+    <div class="card thanks">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="28"/><path d="M19 33l9 9 17-19"/></svg>
+      <h2>Thank you for your time and valuable feedback.</h2>
+      <p>Your answers have been recorded and will help our Irish Angus Schools Competition project.</p>
+      <button class="btn btn-primary" id="againBtn" type="button">Record another response</button>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Sean Monahan · Eamon Gill · Micheal Glennon · Charlie Minnock</span>
+    <a href="/results">Results (team only)</a>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
+<script src="/assets/config.js"></script>
+<script src="/assets/common.js"></script>
+<script src="/assets/survey.js"></script>
+</body>
+</html>
