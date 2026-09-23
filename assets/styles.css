@@ -81,6 +81,8 @@ input[type=text]:focus,select:focus{border-color:var(--grass);outline:none;box-s
 .btn-primary:disabled{opacity:.6;cursor:progress}
 .btn-ghost{background:transparent;border:1px solid var(--line-strong);color:var(--ink-2);padding:10px 16px;min-height:44px;font-weight:600}
 .status{font-size:.9rem;color:var(--ink-3)}
+.privacy ul{margin:10px 0 0;padding-left:1.2em;display:grid;gap:6px;font-size:.9rem;color:var(--ink-2)}
+.privacy .sub{margin-top:12px}
 .contact{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem;color:var(--ink-2)}
 .contact strong{color:var(--ink)}
 
